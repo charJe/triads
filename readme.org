@@ -1,0 +1,79 @@
+#+title: Triads
+* Usage
+
+~triads key [file]~
+
+Input Roman numerals should be separated by a newline or spaces.
+
+Major key to standard output.
+#+begin_src
+$ echo "I V vii I" | triads C
+Generating triads from standard input in the key of C Major.
+I:     C  E  G
+V:     G  B  D
+vii:   B  D  F
+I:     C  E  G
+#+end_src
+
+Minor key with a flat in the name.
+#+begin_src
+echo "i iv V i" | triads Bbm
+Generating triads from standard input in the key of B♭ minor.
+i:     B♭ D♭ F
+iv:    E♭ G♭ B♭
+V:     F  A  C
+i:     B♭ D♭ F
+#+end_src
+
+Outputting to a file, key modulation, and improper input.
+#+begin_src
+triads E > triads.txt
+Generating triads from standard input in the key of E Major.
+I IV V I
+V/V V/I V/ii V/vii V/V
+i
+
+debugger invoked on a CHARJE.TRIADS::CHORD-ERROR in thread
+#<THREAD "main thread" RUNNING {1002F20003}>:
+  i is not a valid chord of E Major.
+
+Type HELP for debugger help, or (SB-EXT:EXIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [USE-NEW-ROMAN] Enter a new roman numeral.
+  1: [ABORT        ] Exit from the current thread.
+
+((:METHOD CHARJE.TRIADS::ROMAN-TO-TRIAD (CHARJE.TRIADS::MAJOR-KEY T)) E Major "i") [fast-method]
+   source: (ERROR 'CHORD-ERROR :BAD-CHORD ROMAN :KEY OBJ)
+0] 0
+New roman numeral: I
+vii V I
+^D
+#+end_src
+
+Output file is clean of any mistakes.
+#+begin_src
+cat triads.txt
+I:     E  G♯ B
+IV:    A  C♯ E
+V:     B  D♯ F♯
+I:     E  G♯ B
+V/V:   F♯ A♯ C♯
+V/I:   B  D♯ F♯
+V/ii:  C♯ E  G♯
+V/vii: A♯ C♯ E
+V/V:   F♯ A♯ C♯
+I:     E  G♯ B
+vii:   D♯ F♯ A
+V:     B  D♯ F♯
+I:     E  G♯ B
+#+end_src
+
+* Building
+make dependencies available first
+#+begin_src sh
+  sbcl --no-userinit \
+       --eval "(require :asdf)" \
+       --eval "(require :charje.triads \"$(pwd)/charje.triads.asd\")" \
+       --eval "(asdf:make :charje.triads)"
+#+end_src
