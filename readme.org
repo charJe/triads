@@ -77,3 +77,7 @@ make dependencies available first
        --eval "(require :charje.triads \"$(pwd)/charje.triads.asd\")" \
        --eval "(asdf:make :charje.triads)"
 #+end_src
+
+* Installing
+
+~triads~ is currently available from [[https://git.sr.ht/~whereiseveryone/guixrus#usage][Guix 'R Us]].
