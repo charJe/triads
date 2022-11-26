@@ -3,7 +3,7 @@
 (defsystem charje.triads
   :description "Music composition tool to convert roman numerals into triads"
   :long-description "Triads is a simple command line tool that reads roman
-numeral notation from standard input (or a file) and an musical key and outputs
+numeral notation from standard input (or a file) and a musical key and outputs
 the roman numeral in addition to the notes of the triad associated with that
 roman numeral given the key."
   :version "0"
