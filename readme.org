@@ -80,4 +80,8 @@ make dependencies available first
 
 * Installing
 
-~triads~ is currently available from [[https://git.sr.ht/~whereiseveryone/guixrus#usage][Guix 'R Us]].
+~triads~ is currently available from [[https://packages.guix.gnu.org/packages/cl-triads/][GNU Guix]] and can be installed as follows:
+
+#+begin_src sh
+  guix install sbcl-triads:bin
+#+end_src
