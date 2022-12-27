@@ -69,6 +69,11 @@ V:     B  D♯ F♯
 I:     E  G♯ B
 #+end_src
 
+It is also possible to specify a filename to write to from the command line.
+#+begin_src
+echo "I V vii I" | triads C triads.txt
+#+end_src
+
 * Building
 make dependencies available first
 #+begin_src sh
